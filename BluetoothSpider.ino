@@ -2,6 +2,10 @@
 #include <NewPing.h> //Interface with ultrasonic distance sensor HC-SR04 //Version 1.9.4 by Tim Eckel
 #include <Servo.h>   
 
+/*TODO
+Fix: Servos are disturbed when there is serial communication.
+
+*/
 NewPing Sonar(A3, A2, 200); // trigger pin, echo pin, and optional maximum distance
 SoftwareSerial bluetoothSerial(A0, A1); // RX, TX
 
@@ -31,6 +35,7 @@ void setup() {
 
 void loop() {
   softSerial();
+  
 }
 
 void stand(){

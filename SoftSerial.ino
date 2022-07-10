@@ -1,8 +1,14 @@
 void softSerial(){ //Relay Serial in both directions
-    while (bluetoothSerial.available() > 0) { //if vs while
+    if (bluetoothSerial.available() > 0) { //if vs while
       w = bluetoothSerial.read();
       data = String(w);
       Serial.write(w);
+    }
+
+    //hook
+    if (data.equals("p")){
+      int cm = Sonar.convert_cm(Sonar.ping_median(7));
+      bluetoothSerial.println("Pong: " + String(cm) + "cm");
     }
 
     if (Serial.available() > 0) {
@@ -18,5 +24,7 @@ void softSerial(){ //Relay Serial in both directions
         NL = true;
       }
     }
+
+   
   
   }
